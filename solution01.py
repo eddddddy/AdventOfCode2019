@@ -25,7 +25,6 @@ def calculate_fuel_recursive_all():
 
 
 def main():
-
     # Part 1
     print(calculate_fuel_all())
 
