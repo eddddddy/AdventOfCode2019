@@ -44,19 +44,17 @@ def sum_alignment_parameters(intersections):
         total += intersection[0] * intersection[1]
     return total
 
-
-def to_ascii(movement_function):
-    movement_function = [str(command) if isinstance(command, int) else command for command in movement_function]
-    ascii_str = ','.join(movement_function) + '\n'
-    return [ord(char) for char in ascii_str]
+    
+def to_ascii(s):
+    return [ord(char) for char in s + '\n']
 
 
 def collect_dust(program):
-    A = to_ascii(['R', 8, 'L', 10, 'R', 8])
-    B = to_ascii(['R', 12, 'R', 8, 'L', 8, 'L', 12])
-    C = to_ascii(['L', 12, 'L', 10, 'L', 8])
-    routine = to_ascii(['A', 'B', 'A', 'C', 'A', 'B', 'C', 'C', 'A', 'B'])
-    video = [ord('n'), ord('\n')]
+    A = to_ascii('R,8,L,10,R,8')
+    B = to_ascii('R,12,R,8,L,8,L,12')
+    C = to_ascii('L,12,L,10,L,8')
+    routine = to_ascii('A,B,A,C,A,B,C,C,A,B')
+    video = to_ascii('n')
 
     _, output = execute_program(program, routine + A + B + C + video)
     return output[-1]
